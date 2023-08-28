@@ -1,25 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package upeu.edu.pe.lp2_test.infraestructura.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 /**
  *
  * @author gratt
  */
+
 @Entity
 @Table(name = "products")
-public class Product_Entity {
+public class ProductEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,25 +28,12 @@ public class Product_Entity {
     private LocalDateTime dateUpdate;
     
     @ManyToOne
-    private User_Entity User_Entity;  
+    @JoinColumn(name = "user_id")
+    private UserEntity UserEntity;  
 
-    public Product_Entity() {
+    public ProductEntity() {
+        this.setCode(UUID.randomUUID().toString());
     }
-
-    public Product_Entity(Integer id, String code, String name, String description, String image, BigDecimal price, LocalDateTime dateCreated, LocalDateTime dateUpdate, User_Entity User_Entity) {
-        this.id = id;
-        this.code = code;
-        this.name = name;
-        this.description = description;
-        this.image = image;
-        this.price = price;
-        this.dateCreated = dateCreated;
-        this.dateUpdate = dateUpdate;
-        this.User_Entity = User_Entity;
-    }
-    
-    
-    
 
     public Integer getId() {
         return id;
@@ -118,11 +99,18 @@ public class Product_Entity {
         this.dateUpdate = dateUpdate;
     }
 
-    public User_Entity getUser_Entity() {
-        return User_Entity;
+    public UserEntity getUserEntity() {
+        return UserEntity;
     }
 
-    public void setUser_Entity(User_Entity User_Entity) {
-        this.User_Entity = User_Entity;
+    public void setUserEntity(UserEntity userEntity) {
+        this.UserEntity = userEntity;
     }
+
+    @Override
+    public String toString() {
+        return "ProductEntity{" + "id=" + id + ", code=" + code + ", name=" + name + ", description=" + description + ", image=" + image + ", price=" + price + ", dateCreated=" + dateCreated + ", dateUpdate=" + dateUpdate + ", User_Entity=" + UserEntity + '}';
+    }
+
+    
 }

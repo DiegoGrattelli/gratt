@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  */
 @Entity
 @Table (name = "users")
-public class User_Entity {
+public class UserEntity {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,11 +25,13 @@ public class User_Entity {
     private String cellphone;
     private String password;
     private LocalDateTime dateCreated;
+    @Enumerated(EnumType.STRING)
+    private UserType userType;
 
-    public User_Entity() {
+    public UserEntity() {
     }
 
-    public User_Entity(Integer id, String username, String firstname, String lastname, String email, String address, String cellphone, String password, LocalDateTime dateCreated) {
+    public UserEntity(Integer id, String username, String firstname, String lastname, String email, String address, String cellphone, String password, LocalDateTime dateCreated, UserType userType) {
         this.id = id;
         this.username = username;
         this.firstname = firstname;
@@ -39,9 +41,8 @@ public class User_Entity {
         this.cellphone = cellphone;
         this.password = password;
         this.dateCreated = dateCreated;
+        this.userType = userType;
     }
-
-    
     
     public Integer getId() {
         return id;
@@ -114,4 +115,14 @@ public class User_Entity {
     public void setDateCreated(LocalDateTime dateCreated) {
         this.dateCreated = dateCreated;
     }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
+    
+    
 }
