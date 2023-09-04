@@ -4,6 +4,7 @@
  */
 package upeu.edu.pe.lp2_test.infraestructura.adapter;
 
+import org.springframework.stereotype.Repository;
 import upeu.edu.pe.lp2_test.app.repository.ProductRepository;
 import upeu.edu.pe.lp2_test.infraestructura.entity.ProductEntity;
 import upeu.edu.pe.lp2_test.infraestructura.entity.UserEntity;
@@ -12,6 +13,7 @@ import upeu.edu.pe.lp2_test.infraestructura.entity.UserEntity;
  *
  * @author diego
  */
+@Repository
 public class ProductRepositoryImpl implements ProductRepository {
     private final ProductCrudRepository productCrudRepository ;
 

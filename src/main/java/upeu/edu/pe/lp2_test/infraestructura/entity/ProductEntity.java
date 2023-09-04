@@ -24,12 +24,12 @@ public class ProductEntity {
     private String image;
     private BigDecimal price;
     
-    private LocalDateTime dateCreated;
-    private LocalDateTime dateUpdate;
     
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserEntity UserEntity;  
+    private UserEntity userEntity;  
+    private LocalDateTime dateCreated;
+    private LocalDateTime dateUpdate;
 
     public ProductEntity() {
         this.setCode(UUID.randomUUID().toString());
@@ -100,17 +100,21 @@ public class ProductEntity {
     }
 
     public UserEntity getUserEntity() {
-        return UserEntity;
+        return userEntity;
     }
 
     public void setUserEntity(UserEntity userEntity) {
-        this.UserEntity = userEntity;
+        this.userEntity = userEntity;
     }
 
     @Override
     public String toString() {
-        return "ProductEntity{" + "id=" + id + ", code=" + code + ", name=" + name + ", description=" + description + ", image=" + image + ", price=" + price + ", dateCreated=" + dateCreated + ", dateUpdate=" + dateUpdate + ", User_Entity=" + UserEntity + '}';
+        return "ProductEntity{" + "id=" + id + ", code=" + code + ", name=" + name + ", description=" + description + ", image=" + image + ", price=" + price + ", dateCreated=" + dateCreated + ", dateUpdate=" + dateUpdate + ", userEntity=" + userEntity + '}';
     }
+
+    
+
+    
 
     
 }
